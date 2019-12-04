@@ -1,5 +1,6 @@
 export {
   add,
+  addAsync,
   subtract,
   increment,
   decrement

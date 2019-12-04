@@ -44,7 +44,7 @@ class RepoRoutes extends Component {
 
   loadData() {
     this.setState({isLoading: true});
-    axios.get('https://api.github.com/users/deepanshu48jain/repos')
+    axios.get('https://api.github.com/users/buckyroberts')
       .then((response) => {
         this.setState({
           data: response.data,

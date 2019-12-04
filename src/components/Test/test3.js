@@ -11,7 +11,8 @@ class Test3Component extends Component {
   render() {
     return (
       <div className="columns">
-        <h4>Test 3 component</h4>
+        <h4>Test 3 component - {this.props.ctr}</h4>
+        <button className="btn yellow green-text" onClick={() => this.props.onAddCounter()}>Material Button</button>
       </div>
     )
   }
@@ -26,7 +27,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddCounter: () => dispatch(actionCreators.add(10)),
+    onAddCounter: () => dispatch(actionCreators.addAsync(10)),
   }
 };
 

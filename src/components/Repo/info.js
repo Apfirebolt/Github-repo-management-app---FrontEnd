@@ -8,14 +8,18 @@ class InfoComponent extends Component {
 
   }
 
+  componentDidMount() {
+    console.log('Props passed are : ', this.props);
+  }
+
   render() {
     const { repoData } = this.props;
     return (
       <div className="columns">
-        <h4>Info Component</h4>
+        <h4>Info Component - {this.props.ctr}</h4>
         {Object.keys(repoData).map((value) => {
           return (
-            <p key={repoData[value].id}>{repoData[value].id}</p>
+            <p>{repoData[value]}</p>
           )
         })}
       </div>
