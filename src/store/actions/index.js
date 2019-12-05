@@ -13,4 +13,6 @@ export {
 export {
   search_user,
   search_user_util,
+  search_result,
+  search_result_store
 } from './repo';

@@ -18,6 +18,9 @@ const reducer = ( state = initialState, action ) => {
 
     case actionTypes.SEARCH_REPO:
       return updateObject(state, {user: 'Vishal'});
+
+    case actionTypes.QUERY_RESULTS:
+      return updateObject(state, {query_search: action.val});
   }
   return state;
 };

@@ -1,0 +1,27 @@
+.summary_container {
+  .card {
+    background-color: #111273;
+    margin: 1rem auto;
+
+    .card-title {
+      display: flex;
+      justify-content: space-between;
+      color: #FFF;
+    }
+  }
+
+  .card-panel {
+    padding: 0.5rem;
+    span {
+      border-radius: 1rem;
+      padding: 1rem;
+      background-color: #09d3ac;
+      font-family: cursive;
+      font-size: 1rem;
+    }
+
+    button {
+      margin: 1rem;
+    }
+  }
+}

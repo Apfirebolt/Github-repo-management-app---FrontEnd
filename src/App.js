@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
 import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
 
 import ProfileComponent from './pages/Profile/routes';

@@ -10,8 +10,7 @@ class Test4Component extends Component {
   }
 
   componentDidMount() {
-    console.log('Calling API method..');
-    this.props.getUserDetails();
+    console.log('Calling API method..', this.props.current);
   }
 
   render() {
@@ -29,8 +28,7 @@ class Test4Component extends Component {
 const mapStateToProps = state => {
   return {
     ctr: state.ctr.counter,
-    current: state.repo.current_repo
-
+    current: state.repo.query_search
   }
 };
 
