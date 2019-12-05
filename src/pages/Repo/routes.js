@@ -16,30 +16,14 @@ class RepoRoutes extends Component {
       isLoading: false
     }
     this.loadData = this.loadData.bind(this);
-    this.displayData = this.displayData.bind(this);
   }
 
   componentDidMount() {
     this.loadData();
   }
 
-  componentDidUpdate() {
-    const { isLoading, data } = this.state;
-  }
-
-  displayData() {
-    const { data, isLoading } = this.state;
-    Object.keys(data).map((value) => {
-      return (
-        <p key={data[value].id}>{data[value]} Something</p>
-      )
-    })
-  }
-
   loadData() {
-    this.setState({isLoading: true});
     this.props.getUserDetails();
-    this.setState({isLoading: false});
   }
 
   render() {
@@ -47,7 +31,7 @@ class RepoRoutes extends Component {
     const { current } = this.props;
     return (
       <div className="columns">
-        <h2>Repository Component</h2>
+        <h3 className="teal-text">User Repo Information</h3>
         {Object.keys(current).length == 0 ?
           <Loader
             type="Puff"
@@ -66,9 +50,7 @@ class RepoRoutes extends Component {
 
 const mapStateToProps = state => {
   return {
-    ctr: state.ctr.counter,
     current: state.repo.current_repo
-
   }
 };
 

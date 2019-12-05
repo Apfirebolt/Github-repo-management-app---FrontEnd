@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react
 import ProfileComponent from './pages/Profile/routes';
 import RepoComponent from './pages/Repo/routes';
 import TestComponent from './pages/Test/routes';
+import UserComponent from './pages/Users/routes';
+import QueryComponent from './pages/Queries/routes';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
               <li><NavLink to="/profile">Profile</NavLink></li>
               <li><NavLink to="/test">Test</NavLink></li>
               <li><NavLink to="/repo">Repositories</NavLink></li>
+              <li><NavLink to="/users">Users</NavLink></li>
+              <li><NavLink to="/query">Queries</NavLink></li>
             </ul>
           </div>
         </nav>
@@ -27,6 +31,9 @@ function App() {
           <Route path="/profile" component={ProfileComponent} />
           <Route path="/repo" component={RepoComponent} />
           <Route path="/test" component={TestComponent} />
+          <Route path="/query" component={QueryComponent} />
+          <Route path="/users" component={UserComponent} />
+
         </Switch>
       </Router>
     </div>
