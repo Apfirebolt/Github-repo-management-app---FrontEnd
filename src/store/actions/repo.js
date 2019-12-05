@@ -8,9 +8,10 @@ export const search_user = ( value ) => {
   };
 };
 
+// Get details of a specific github user
 export const search_user_util = (payload) => {
   return (dispatch) => {
-    axios.get('https://api.github.com/users/buckyroberts')
+    axios.get(`https://api.github.com/users/${payload}`)
       .then((response) => {
         let payload = response.data;
         dispatch(search_user(payload));

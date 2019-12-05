@@ -13,7 +13,8 @@ class RepoRoutes extends Component {
     super(props);
     this.state = {
       data: {},
-      isLoading: false
+      isLoading: false,
+      user: 'apfirebolt'
     }
     this.loadData = this.loadData.bind(this);
   }
@@ -23,7 +24,7 @@ class RepoRoutes extends Component {
   }
 
   loadData() {
-    this.props.getUserDetails();
+    this.props.getUserDetails(this.state.user);
   }
 
   render() {
@@ -56,7 +57,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserDetails: () => dispatch(actionCreators.search_user_util()),
+    getUserDetails: (payload) => dispatch(actionCreators.search_user_util(payload)),
   }
 };
 

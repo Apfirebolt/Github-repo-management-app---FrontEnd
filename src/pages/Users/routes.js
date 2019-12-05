@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/actions/index';
 import SampleComponent from '../../components/Users/sample';
 
 
@@ -12,6 +13,19 @@ class UserRoutes extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.changeUrl = this.changeUrl.bind(this);
+  }
+
+  changeUrl() {
+    const { search_user } = this.state;
+    const { history } = this.props;
+    this.props.getUserDetails(search_user);
+
+    history.push('/repo');
+  }
+
+  componentDidMount() {
+    console.log('The passed props are : ', this.props);
   }
 
   handleChange(event) {
@@ -36,7 +50,7 @@ class UserRoutes extends Component {
           </div>
 
           <div className="col s2">
-            <button className="btn">Search User</button>
+            <button className="btn" onClick={() => this.changeUrl()}>Search User</button>
           </div>
         </div>
 
@@ -52,4 +66,16 @@ class UserRoutes extends Component {
   }
 }
 
-export default UserRoutes;
+const mapStateToProps = state => {
+  return {
+    ctr: state.ctr.counter,
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getUserDetails: (payload) => dispatch(actionCreators.search_user_util(payload)),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserRoutes);

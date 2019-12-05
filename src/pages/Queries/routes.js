@@ -7,7 +7,7 @@ import Loader from 'react-loader-spinner'
 
 import SampleComponent from '../../components/Queries/sample';
 import SummaryComponent from '../../components/Queries/summary';
-import DetailComponent from '../../components/Queries/detail';
+import DetailPage from './detail';
 
 class QueryRoutes extends Component {
   constructor(props) {
@@ -121,10 +121,12 @@ class QueryRoutes extends Component {
 
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li><NavLink to="/query/sample">Query sample</NavLink></li>
+          <li><NavLink to="/query/detail">Query Detail</NavLink></li>
         </ul>
 
         <Switch>
           <Route path="/query/sample" component={SampleComponent} />
+          <Route path="/query/detail/:id" component={DetailPage} />
         </Switch>
       </Router>
     )

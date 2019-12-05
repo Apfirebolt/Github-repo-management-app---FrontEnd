@@ -7,6 +7,11 @@ class QuerySummaryComponent extends Component {
   constructor(props) {
     super(props);
 
+    this.changeUrl = this.changeUrl.bind(this);
+  }
+
+  changeUrl(id) {
+    this.props.router.push('/detail/' + id);
   }
 
   render() {
@@ -30,7 +35,7 @@ class QuerySummaryComponent extends Component {
                 <div className="card-panel">
                   <span>SCORE {value.score}</span>, <span>STARS {value.stargazers_count}</span> stars on GITHUB
                   <button className="btn">Add This Repo</button>
-                  <button className="btn">View Details</button>
+                  <button className="btn" onClick={() => this.changeUrl(index)}>View Details</button>
                 </div>
               </div>
             )
