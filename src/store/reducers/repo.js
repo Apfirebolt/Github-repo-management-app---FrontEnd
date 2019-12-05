@@ -13,10 +13,10 @@ const initialState = {
 
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
-    case actionTypes.ADD_REPO:
-      return updateObject(state, {current_repo: state.current_repo});
+    case actionTypes.SEARCH_USER:
+      return updateObject(state, {current_repo: action.val});
 
-    case actionTypes.CHANGE_USER:
+    case actionTypes.SEARCH_REPO:
       return updateObject(state, {user: 'Vishal'});
   }
   return state;

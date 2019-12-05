@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from 'react-loader-spinner'
+import * as actionCreators from '../../store/actions/index';
 
 import InfoComponent from '../../components/Repo/info'
 
@@ -21,14 +23,6 @@ class RepoRoutes extends Component {
     this.loadData();
   }
 
-  componentWillReceiveProps() {
-
-  }
-
-  componentWillUpdate() {
-
-  }
-
   componentDidUpdate() {
     const { isLoading, data } = this.state;
   }
@@ -44,35 +38,25 @@ class RepoRoutes extends Component {
 
   loadData() {
     this.setState({isLoading: true});
-    axios.get('https://api.github.com/users/buckyroberts')
-      .then((response) => {
-        this.setState({
-          data: response.data,
-          isLoading: false
-        })
-        this.forceUpdate();
-      })
-      .catch((err) => {
-        console.log('Some error occurred! ', err);
-      })
+    this.props.getUserDetails();
+    this.setState({isLoading: false});
   }
 
   render() {
     const { isLoading, data } = this.state;
+    const { current } = this.props;
     return (
       <div className="columns">
         <h2>Repository Component</h2>
-        {isLoading ?
+        {Object.keys(current).length == 0 ?
           <Loader
             type="Puff"
             color="coral"
             height={200}
             width={200}
-            timeout={3000} //3 secs
-
           />
           :
-          <InfoComponent repoData = {data}/>
+          <InfoComponent repoData = {this.props.current}/>
         }
 
       </div>
@@ -80,4 +64,18 @@ class RepoRoutes extends Component {
   }
 }
 
-export default RepoRoutes;
+const mapStateToProps = state => {
+  return {
+    ctr: state.ctr.counter,
+    current: state.repo.current_repo
+
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getUserDetails: () => dispatch(actionCreators.search_user_util()),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RepoRoutes);

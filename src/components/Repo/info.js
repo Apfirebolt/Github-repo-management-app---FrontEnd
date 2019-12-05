@@ -17,9 +17,9 @@ class InfoComponent extends Component {
     return (
       <div className="columns">
         <h4>Info Component - {this.props.ctr}</h4>
-        {Object.keys(repoData).map((value) => {
+        {Object.keys(repoData).map((value, index) => {
           return (
-            <p>{repoData[value]}</p>
+            <p key={index}>{repoData[value]}</p>
           )
         })}
       </div>

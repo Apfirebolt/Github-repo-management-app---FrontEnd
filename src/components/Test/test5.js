@@ -8,6 +8,10 @@ class Test5Component extends Component {
 
   }
 
+  componentDidMount() {
+    console.log('Props inside fifth component : ', this.props.current);
+  }
+
   render() {
     return (
       <div className="columns">
@@ -20,7 +24,7 @@ class Test5Component extends Component {
 const mapStateToProps = state => {
   return {
     ctr: state.ctr.counter,
-
+    current: state.repo.current_repo
   }
 };
 
