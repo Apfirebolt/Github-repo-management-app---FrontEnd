@@ -29,10 +29,10 @@ class LoginComponent extends Component {
 
     // Make a request to obtain a token
     console.log('About to make api request call..', passedData);
-    axios.post('http://localhost:8000/accounts/api/api-token-auth', {...passedData})
+    axios.post('http://localhost:8000/accounts/api/api-token-auth', passedData)
       .then((response) => {
-        console.log('Token is : ', response.Token);
-        this.state.token = response.Token;
+        console.log('Token is : ', response.data.token);
+        this.state.token = response.data.token;
       })
       .catch((error) => {
         console.log('Request failed : ', error);
