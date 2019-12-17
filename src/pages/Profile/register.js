@@ -14,7 +14,6 @@ class RegisterComponent extends Component {
       email: '',
       password1: '',
       password2: '',
-      profile_image: null,
       about: '',
       errors: {
         first_name: '',
@@ -75,30 +74,27 @@ class RegisterComponent extends Component {
       this.state.errors.password1 = 'Passwords do not match!';
     }
     if(this.validateForm(this.state.errors)) {
-      console.info('Valid Form', this.state.email == '');
+      console.info('Valid Form');
     }else{
       console.error('Invalid Form', this.state.errors);
     }
 
     // Posting data after validation
-    let formData = new FormData();
-    formData.append('username', this.state.username);
-    formData.append('first_name', this.state.first_name);
-    formData.append('last_name', this.state.last_name);
-    formData.append('email', this.state.email);
-    formData.append('password', this.state.password1);
-    formData.append('profile_image', this.state.profile_image);
-    formData.append('about_me', this.state.about);
+    let formData = {};
+    formData.username = this.state.username;
+    formData.first_name = this.state.first_name;
+    formData.last_name = this.state.last_name;
+    formData.email = this.state.email;
+    formData.password = this.state.password1;
+    formData.about_me = this.state.about;
 
-    console.log('Form data is : ', formData);
-
-    // axios.post('http://localhost:8000/accounts/api/create', formData)
-    //   .then((response) => {
-    //     console.log('Response is : ', response);
-    //   })
-    //   .catch((err) => {
-    //     console.log('Operation failed, error ', formData);
-    //   })
+    axios.post('http://localhost:8000/accounts/api/create', formData)
+      .then((response) => {
+        console.log('Response is : ', response);
+      })
+      .catch((err) => {
+        console.log('Operation failed, error ', formData);
+      })
   }
 
   componentDidMount() {
@@ -162,18 +158,6 @@ class RegisterComponent extends Component {
           <div className="input-field col s5">
             <input placeholder="Please re-enter your password" name="password2" id="password2" type="password" onChange={(event) => this.handleChange(event)}
                    className="validate" />
-          </div>
-
-          <div className = "file-field input-field col s6">
-            <div className = "btn white teal-text">
-              <span>Upload Image</span>
-              <input type = "file" name="profile_image" id="profile_image" onChange={(event) => this.handleChange(event)} />
-            </div>
-
-            <div className = "file-path-wrapper">
-              <input className = "file-path validate" type = "text"
-                     placeholder = "Please choose a profile avatar" />
-            </div>
           </div>
 
           <div className="col s6 input-field">

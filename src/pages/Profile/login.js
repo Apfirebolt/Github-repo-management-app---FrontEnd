@@ -23,9 +23,9 @@ class LoginComponent extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { username, password } = this.state;
-    let passedData = new FormData();
-    passedData.append('username', username);
-    passedData.append('password', password);
+    let passedData = {};
+    passedData.username = username;
+    passedData.password = password;
 
     // Make a request to obtain a token
     console.log('About to make api request call..', passedData);
@@ -50,7 +50,7 @@ class LoginComponent extends Component {
     return (
       <div className="columns">
         <h4>Login Component</h4>
-        <form className="row">
+        <form className="row" encType="multipart/form-data">
           <div className="input-field col s1">
             <label htmlFor="username">Enter Your Username</label>
           </div>
